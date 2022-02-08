@@ -1,0 +1,4 @@
+5.observe the difference between methods calling and constructor calling.
+For constructor calling we dont need to call the constructor it is automatically called when object of that
+class is made while in method calling we have to call the method using object reference or by using class
+name(for static methods).
