@@ -1,0 +1,93 @@
+----------Ques1-------
+Create sample classes to understand boxing & unboxing.
+
+public class UnBoxingEx {
+	public static void main(String[] args) {
+		Integer i=10;
+		int a=i;
+		System.out.println(a);
+	}
+}
+
+public class BoxingEx {
+public static void main(String[] args) {
+	int a=10;
+	Integer i=new Integer(a);
+	Integer j=5;
+	System.out.println(i+j);
+}
+}
+
+---------Ques2-------
+create a class and convert all primitive datatypes into wrapper classes.
+
+
+public class WrapperEx {
+public static void main(String[] args) {
+	int a=100;char ch='c';
+	Integer i=new Integer(a);
+	Character s=new Character(ch);
+	System.out.println(i);
+	System.out.println(ch);
+}
+}
+
+-------Ques3--------
+create an EnumClass define enum inside class traverse it.
+
+public class EnumEx {
+enum Animal{
+	CAT,DOG,COW
+}
+public static void main(String[] args) {
+	for(Animal i:Animal.values()) {
+		System.out.println(i);
+	}
+}
+}
+
+--------Ques4--------
+Create a class ArrayEx and sort the elemnts by using ArraySort method
+
+import java.util.Arrays;
+
+public class ArrayEx {
+public static void main(String[] args) {
+	int arr[]= {11,2,4,22,10,21,24};
+	Arrays.sort(arr);
+	System.out.println(Arrays.toString(arr));
+}
+}
+
+
+--------Ques5------
+ Create a class and apply static import package into that class
+ 
+ import static java.lang.System.*;
+public class StaticImportEx {
+	
+	public static void main(String args[]){
+	out.println("Hello");
+	out.println("Java");
+	}
+	}
+  
+--------Ques6-------
+create a class and create deafault and param construtcor and create constructor chaining.
+
+public class ConstrChaining {
+public ConstrChaining() {
+	this("Hello!");
+	System.out.println("This is default constructor");
+}
+public ConstrChaining(String s) {
+	System.out.println(s+" "+"This is param constructor");
+	
+}
+public static void main(String[] args) {
+	ConstrChaining c=new ConstrChaining();
+	
+}
+}
+
+
