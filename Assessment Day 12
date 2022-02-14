@@ -1,0 +1,172 @@
+                                                 -*--*---*--*-Session 1--*---*---*-
+                                                
+--------Ques1-------
+create a HashSet class by add 10 numbers by using for loop and extra add some more objects and print the all the values.
+import java.util.HashSet;
+
+public class HashSetEx1 {
+public static void main(String[] args) {
+	HashSet h=new HashSet();
+	for(int i=0;i<10;i++) {
+		h.add(i);
+	}
+	h.add(10);
+	System.out.println(h);
+}
+}
+
+-----Ques2------
+create a LinkedHashSet class by add 10 numbers by using for loop and extra add some more objects and print the all the values.
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetEx {
+public static void main(String[] args) {
+	LinkedHashSet lh=new LinkedHashSet();
+	for(int i=0;i<10;i++) {
+		lh.add(i);
+	}
+	lh.add("Hii!");
+	lh.add(12);
+	lh.add(12);
+	lh.add(true);
+	System.out.println(lh);
+}
+}
+
+------Ques3-------
+By using Iterator class iterate the HashSet class Elements.
+import java.util.HashSet;
+import java.util.Iterator;
+public class HashSetIterator {
+	
+    public static void main(String[] args) {
+		HashSet h=new HashSet();
+		h.add(1);
+		h.add(2.9f);
+		h.add(3.09);
+		h.add("Hii");
+	Iterator i=h.iterator();
+	while(i.hasNext()) {
+		System.out.println(i.next());}
+	}
+	}
+
+
+-----Ques4-------
+By using Iterator class iterate the LinkedHashSet Elements.
+import java.util.LinkedHashSet;
+import java.util.Iterator;
+public class LinkedHashIter {
+	
+	public static void main(String[] args) {
+		LinkedHashSet lh=new LinkedHashSet();
+		for(int i=0;i<10;i++) {
+			lh.add(i);
+		}
+		lh.add("Hii!");
+	    Iterator i=lh.iterator();
+	    while(i.hasNext()) {
+	    	
+		System.out.println(i.next());
+	}
+	}
+
+}
+
+
+------Ques5-----
+By using generics cretae hashset class apply some methods,addall(),remove().
+import java.util.HashSet;
+
+public class HashSetGeneric {
+	
+  public static void main(String[] args) {
+			HashSet <String>h=new HashSet();
+			HashSet <String>h1=new HashSet();
+			h.add("Hii!");
+			h.add("Good");
+			h.add("morning");
+			h1.add("Hello");
+			h1.add("Bye");
+			//adding two hash set
+			h.addAll(h1);
+			System.out.println(h);
+			//removing an object from set
+		   h.remove("Bye");
+		   System.out.println(h);
+		   //removing h1 elements from h set
+		   h.retainAll(h1);
+		   System.out.println(h);
+		}
+}
+
+                                                               -*--*---*--*-Session 2--*---*---*-
+                                                               
+ -------Ques1---------
+create a class and print the elements by using Tree Set.
+import java.util.TreeSet;
+
+public class TreeSetEx1 {
+public static void main(String[] args) {
+	TreeSet ts=new TreeSet();
+	ts.add(11);
+	ts.add(12);
+	ts.add(100);
+	ts.add(33);
+	ts.add(32);
+	System.out.println(ts);
+}
+}
+
+-----Ques2-----
+Create a class by using generics print all the elements with Tree Set.
+import java.util.TreeSet;
+
+public class TreeSetEx {
+public static void main(String[] args) {
+	TreeSet <Character>ts=new TreeSet();
+	ts.add('e');
+	ts.add('a');
+	ts.add('b');
+	ts.add('d');
+	ts.add('c');
+	System.out.println(ts);
+}
+}
+
+------Ques3------
+Create a class with Tree Set use Iterator class to print the values.
+import java.util.TreeSet;
+import java.util.Iterator;
+public class TreeSetIter {
+public static void main(String[] args) {
+	TreeSet<Character> ts=new  TreeSet();
+	ts.add('e');
+	ts.add('a');
+	ts.add('b');
+	ts.add('d');
+	ts.add('c');
+   Iterator i=ts.iterator();
+   while(i.hasNext()) {
+	   System.out.println(i.next());
+   }
+}
+}
+
+------Ques4------
+By Using Tree Set retrive and remove highest and lowest value.
+import java.util.TreeSet;
+
+public class TreeSetEx1 {
+public static void main(String[] args) {
+	TreeSet <Integer> ts=new TreeSet();
+	ts.add(11);
+	ts.add(12);
+	ts.add(100);
+	ts.add(33);
+	ts.add(32);
+	System.out.println("Lowest value is "+ts.first());
+	System.out.println("Highest value is "+ts.last());
+}
+}
+
