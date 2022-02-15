@@ -146,8 +146,32 @@ public static void main(String[] args) {
 }
 
                                                                -*--*---*--*-Session 2--*---*---*-
-							    
-----Ques3-----
+	
+	
+	
+-------Ques1-------
+Create a priorityQueue class add elements and print the values.
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
+public class PriorityQEx {
+public static void main(String[] args) {
+	
+	PriorityQueue<String> pq= new  PriorityQueue<String>();
+	
+	pq.add("Hello");
+	pq.add("World!");
+	pq.add("Java");
+	pq.add("Good");
+	pq.add("Day");
+	
+	
+	System.out.println(pq);
+	
+}
+}
+	
+-------Ques2-------
 Create a of HasSet add the heterogenous objects print all the objects.
 import java.util.HashSet;
 
@@ -161,7 +185,7 @@ public static void main(String[] args) {
 	System.out.println(h);
 }
 }
--------Ques4-------
+-------Ques3-------
 Create a of Linked HashSet add the heterogenous objects print all the objects.
 import java.util.LinkedHashSet;
 
@@ -176,7 +200,7 @@ public static void main(String[] args) {
 }
 }
 
--------Ques5-----
+-------Ques4-----
 By using Generics create Tree Set and print the all the values.
 import java.util.TreeSet;
 
