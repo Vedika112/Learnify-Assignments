@@ -103,70 +103,72 @@ public class HashSetGeneric {
                                                                -*--*---*--*-Session 2--*---*---*-
                                                                
  -------Ques1---------
-create a class and print the elements by using Tree Set.
-import java.util.TreeSet;
-
-public class TreeSetEx1 {
-public static void main(String[] args) {
-	TreeSet ts=new TreeSet();
-	ts.add(11);
-	ts.add(12);
-	ts.add(100);
-	ts.add(33);
-	ts.add(32);
-	System.out.println(ts);
-}
-}
-
------Ques2-----
-Create a class by using generics print all the elements with Tree Set.
-import java.util.TreeSet;
-
-public class TreeSetEx {
-public static void main(String[] args) {
-	TreeSet <Character>ts=new TreeSet();
-	ts.add('e');
-	ts.add('a');
-	ts.add('b');
-	ts.add('d');
-	ts.add('c');
-	System.out.println(ts);
-}
-}
-
-------Ques3------
-Create a class with Tree Set use Iterator class to print the values.
-import java.util.TreeSet;
+create a class and print the elements by using keySet.
+import java.util.HashMap;
 import java.util.Iterator;
-public class TreeSetIter {
+import java.util.Set;
+
+public class KeySetEx {
 public static void main(String[] args) {
-	TreeSet<Character> ts=new  TreeSet();
-	ts.add('e');
-	ts.add('a');
-	ts.add('b');
-	ts.add('d');
-	ts.add('c');
-   Iterator i=ts.iterator();
-   while(i.hasNext()) {
-	   System.out.println(i.next());
-   }
+	HashMap<Integer,String> h=new HashMap();
+	h.put(1001, "Apple");
+	h.put(2001, "orange");
+	h.put(3002, "Banana");
+	Set <Integer> s=h.keySet();
+	Iterator i=s.iterator();
+	while(i.hasNext()) {
+		System.out.println(i.next());
+	}
+	}
+}
+-----Ques2----
+Create a class print all the elements with EntrySet.
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class EntrySetEx {
+public static void main(String[] args) {
+	HashMap<Integer,String> h=new HashMap();
+	h.put(1001, "Ram");
+	h.put(2001, "Rita");
+	h.put(3002, "Risha");
+	Set <Entry<Integer,String>> s=h.entrySet();
+	Iterator i=s.iterator();
+	while(i.hasNext()) {
+		System.out.println(i.next());
+	}
+}
+}
+---Ques3--------
+Create a class with HashMap use to print the values.
+import java.util.HashMap;
+
+public class HashMapEx {
+public static void main(String[] args) {
+	HashMap h=new HashMap();
+	h.put(1, "Apple");
+	h.put(2, "orange");
+	h.put(3, "Banana");
+	System.out.println(h);
+}
+}
+------Ques4---------
+By Using LinkedHashMap add elements and print the values.
+import java.util.LinkedHashMap;
+
+public class LinkedHashMapEx {
+public static void main(String[] args) {
+	LinkedHashMap h=new LinkedHashMap();
+	h.put(1, "Rabbit");
+	h.put(2, "Dog");
+	h.put(3, null);
+	System.out.println(h);
 }
 }
 
-------Ques4------
-By Using Tree Set retrive and remove highest and lowest value.
-import java.util.TreeSet;
 
-public class TreeSetEx1 {
-public static void main(String[] args) {
-	TreeSet <Integer> ts=new TreeSet();
-	ts.add(11);
-	ts.add(12);
-	ts.add(100);
-	ts.add(33);
-	ts.add(32);
-	System.out.println("Lowest value is "+ts.first());
-	System.out.println("Highest value is "+ts.last());
-}
-}
+
+
 
