@@ -1,6 +1,6 @@
                                                          --*--*--*--Session 1--*--*--*--                                                         
                                                          
-------ques1-------
+------Ques1-------
 create a class and with divide two numbers by using Scanner class.(z=a/b).without try catch
 
 import java.util.Scanner;
@@ -64,9 +64,48 @@ public static void main(String[] args) {
  ----------Ques1--------
  create a class with user defined exceptions.
  
- 
+ package exceptionHandling;
+
+class MyException extends Exception{
+	int a;
+	public  MyException(int a) {
+		this.a=a;
+	}
+	
+	public String toString() {
+		return "This is user defined exception";
+	}
+}
+public class UserException {
+
+	void add(int a) throws MyException {
+		throw new MyException(a);
+	}
+	public static void main(String[] args) throws MyException {
+		UserException u=new UserException();
+		u.add(90);
+	}
+}
+
  
  ---------Ques2-------
  Create a class with Marks, and valid Marks method, give some number marks are less than he/she fails otherwise pass by using throw keyword.
  
- 
+ package exceptionHandling;
+
+public class Marks {
+public void validMarks(int marks) {
+	if (marks>40) {
+		throw new ArithmeticException("You passed the exam!");
+	}
+	else {
+		
+		System.out.println("You failed the exam!");
+	}
+}
+public static void main(String[] args) {
+	Marks m=new Marks();
+	m.validMarks(45);
+}
+}
+
