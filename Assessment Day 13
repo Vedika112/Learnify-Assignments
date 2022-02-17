@@ -115,6 +115,57 @@ public static void main(String[] args) throws IOException {
 }
 }
 
------Quees7------
+-----Ques7------
 create a class and read the information by using Buffered Reader
+package fileHandling;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class BufferReaderEx {
+public static void main(String[] args) throws IOException {
+	FileReader fw=new FileReader("abc.txt");
+	BufferedReader br=new BufferedReader(fw);
+	String s=br.readLine();
+	while(s!=null) {
+		
+		System.out.print(s);
+	}
+	br.close();
+}
+}
+
+
+                                                                              --*--*--*--Session 2 --*--*--*--
+---------Ques1------
+create a class ArrayList apply without generics.
+import java.util.ArrayList;
+
+public class ArrayListEx {
+
+	public static void main(String[] args) {
+		ArrayList a=new ArrayList();
+		a.add("Hello");
+		a.add(100);
+		a.add(true);
+		a.add(2.9f);
+		System.out.println(a);
+	}
+}
+
+-------Ques2------
+create a class LinkedList apply with generics.
+public class GenericsEx<T>{
+	T i;
+	T get() {
+		return i;
+	}
+public static void main(String[] args) {
+	GenericsEx l=new GenericsEx();
+	l.i=10;
+	System.out.println(l.get());
+}
+}
 
