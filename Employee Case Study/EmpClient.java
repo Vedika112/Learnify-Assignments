@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class EmpClient {
 public static void main(String[] args) {
+	//using hashmap as database
 	HashMap<Integer,Employee> emp=new HashMap();
 	int pid=100;
 	while(true) {
@@ -22,6 +23,7 @@ public static void main(String[] args) {
 		int input=sc.nextInt();
 		switch(input) {
 		case 1:
+			//To add employee
 			System.out.println("Provide details to add an Employee");
 			System.out.println("Enter Employee Name");
 			String ename=sc.next();
@@ -37,7 +39,9 @@ public static void main(String[] args) {
 			emp.put(++pid,e);
 			System.out.println("Item added successfully");
 		    break;
+		   
 		case 2:
+			 //for updating employee details
 			System.out.println("Enter Employee Id to be updated");
 			  int pid1=sc.nextInt();
 			System.out.println("Enter Employee Name");
@@ -54,19 +58,24 @@ public static void main(String[] args) {
 			emp.put(pid1,e1);
 			System.out.println("Item updated  successfully"+""+pid1);
 			break;
-			
+		
 		case 3:
+			// delete employeee details
 			System.out.println("Enter Employee Id to be Deleted");
 			int pid2=sc.nextInt();
 			emp.remove(pid2);
 			System.out.println("Employee deleted successfully"+pid2);
 		    break;
+		    
 		case 4:
+			//get employee by using their ids
 			System.out.println("Enter Employee Id");
 			int pid3=sc.nextInt();
 			System.out.println(emp.get(pid3));
 			break;
+			
 		case 5:
+			//get all employee details
 			Set<Entry<Integer,Employee>> s=emp.entrySet();
 			Iterator<Entry<Integer,Employee>> iter=s.iterator();
 			while(iter.hasNext()) {
