@@ -3,6 +3,8 @@ package casestudy;
 public class Employee {
 private String empName,empEmail,empAdd;
 private int empCode,empSalary;
+
+//getters and setters
 public String getEmpName() {
 	return empName;
 }
@@ -33,6 +35,8 @@ public int getEmpSalary() {
 public void setEmpSalary(int empSalary) {
 	this.empSalary = empSalary;
 }
+
+//param constructor
 public Employee(String empName, String empEmail, String empAdd, int empCode, int empSalary) {
 	super();
 	this.empName = empName;
