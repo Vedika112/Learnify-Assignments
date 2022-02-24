@@ -1,0 +1,81 @@
+Create a table Student add student details modify the all the table columns by using commands.
+postgres=# create database Student;
+CREATE DATABASE
+postgres=# \c student;
+You are now connected to database "student" as user "postgres".
+           
+student=# create table details(sname varchar(15),sid int);
+CREATE TABLE
+
+student=# \d details
+                     Table "public.details"
+ Column |         Type          | Collation | Nullable | Default
+--------+-----------------------+-----------+----------+---------
+ sname  | character varying(15) |           |          |
+ sid    | integer               |           |          |
+
+
+
+student=# alter table details add column rollno int;
+ALTER TABLE
+
+alter table details rename sname to name;
+ALTER TABLE
+
+student=# alter table details alter column rollno type varchar(10);
+ALTER TABLE
+
+student=# \d details
+                     Table "public.details"
+ Column |         Type          | Collation | Nullable | Default
+--------+-----------------------+-----------+----------+---------
+ name   | character varying(15) |           |          |
+ sid    | integer               |           |          |
+ rollno | character varying(10) |           |          |
+
+
+
+student=# insert into details values('John',12,'j123');
+INSERT 0 1
+student=# insert into details values('Marry',43,'m43');
+INSERT 0 1
+student=# select * from details;
+ name  | sid | rollno
+-------+-----+--------
+ John  |  12 | j123
+ Marry |  43 | m43
+(2 rows)
+
+
+
+student=# update details set name='jiya' where sid=12;
+UPDATE 1
+student=# select * from details;
+ name  | sid | rollno
+-------+-----+--------
+ Marry |  43 | m43
+ jiya  |  12 | j123
+(2 rows)
+
+
+student=# truncate table details;
+TRUNCATE TABLE
+student=# \d details;
+                     Table "public.details"
+ Column |         Type          | Collation | Nullable | Default
+--------+-----------------------+-----------+----------+---------
+ name   | character varying(15) |           |          |
+ sid    | integer               |           |          |
+ rollno | character varying(10) |           |          |
+
+
+student=# select * from details;
+ name | sid | rollno
+------+-----+--------
+(0 rows)
+
+
+
+---------Ques2------------
+Create a tables Manager and Employee add details of both tables and join by using equijoin.
+
