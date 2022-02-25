@@ -78,7 +78,7 @@ public class Demo3 {
 
                                                               
                                                               
- create a class with end-user implementation scanner class, username and password matching or not otherwise it will give an error.
+// create a class with end-user implementation scanner class, username and password matching or not otherwise it will give an error.
  import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -109,6 +109,280 @@ public static void main(String[] args) throws ClassNotFoundException, SQLExcepti
     conn.close();
 }
 }
-
+  
+  
+                                                                  --*--*--Session 2--*--*--*--
+				
+--=---=---=-Layered Architecture----=----=----=
+ ====Entity====
  
+ package com.entity;
+
+public class Employee {
+private String empName,empAddress,empEmail;
+private int empSalary;
+
+//default constructor
+public Employee() {
+	// TODO Auto-generated constructor stub
+}
+
+
+//param constructor
+public Employee(String empName, String empAddress, String empEmail, int empSalary) {
+	super();
+	this.empName = empName;
+	this.empAddress = empAddress;
+	this.empEmail = empEmail;
+	this.empSalary = empSalary;
+}
+
+
+//getters and setters
+public String getEmpName() {
+	return empName;
+}
+public void setEmpName(String empName) {
+	this.empName = empName;
+}
+public String getEmpAddress() {
+	return empAddress;
+}
+public void setEmpAddress(String empAddress) {
+	this.empAddress = empAddress;
+}
+public String getEmpEmail() {
+	return empEmail;
+}
+public void setEmpEmail(String empEmail) {
+	this.empEmail = empEmail;
+}
+public int getEmpSalary() {
+	return empSalary;
+}
+public void setEmpSalary(int empSalary) {
+	this.empSalary = empSalary;
+}
+
+
+//tostring
+@Override
+public String toString() {
+	return "Employee [empName=" + empName + ", empAddress=" + empAddress + ", empEmail=" + empEmail + ", empSalary="
+			+ empSalary + "]";
+}
+}
+
+ =====================UI================
+ 
+ package com.controller;
+
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.Map.Entry;
+
+import com.entity.Trainee;
+import com.service.TraineeService;
+import com.service.TraineeServiceImp;
+
+public class Client {
+public static void main(String[] args) {
+	TraineeService tservice=new TraineeServiceImp();
+	while(true) {
+		System.out.println("Trainee Management System");
+		System.out.println("1.Add Trainee");
+		System.out.println("2.Update Trainee");
+		System.out.println("3.Delete Trainee");
+		System.out.println("4.Get Trainee");
+		System.out.println("5.Get All Trainee");
+		Scanner sc=new Scanner(System.in);
+		int option=sc.nextInt();
+		switch(option) {
+		case 1:
+			//To add Trainee
+			System.out.println("Provide details to add an Trainee");
+			System.out.println("Enter Trainee Name");
+			String tname=sc.next();
+			System.out.println("Enter Trainee Salary");
+			int tSal=sc.nextInt();
+			System.out.println("Enter Trainee Address");
+			String tadd=sc.next();
+			System.out.println("Enter Trainee Email");
+			String temail=sc.next();		
+		    Trainee tr=new Trainee(tname, tadd, temail, tSal);
+		    int tId=tservice.addTrainee(tr);
+			System.out.println("Trainer added successfully"+tId);
+		    break;
+		case 2:
+			System.out.println("Enter Trainee id to update");
+			int tid=sc.nextInt();
+			System.out.println("Enter Trainee Name");
+			String tname1=sc.next();
+			System.out.println("Enter Trainee Salary");
+			int tSal1=sc.nextInt();
+			System.out.println("Enter Trainee Address");
+			String tadd1=sc.next();
+			System.out.println("Enter Trainee Email");
+			String temail1=sc.next();		
+		    Trainee tr1=new Trainee(tname1, tadd1, temail1, tSal1);
+		    Trainee updated=tservice.updateTrainee(tid,tr1);
+			System.out.println("Trainee updated"+updated);
+			break;
+		case 3:
+			System.out.println("Enter Trainee id to be deleted");
+			int tid1=sc.nextInt();
+			tservice.deleteTrainee(tid1);
+			System.out.println("Trainee deleted successfully"+tid1);
+			break;
+		case 4:
+			System.out.println("Enter Trainee id to get Trainee");
+			int tid2=sc.nextInt();
+			System.out.println(tservice.getTrainee(tid2));
+			break;
+		case 5:
+			Set<Entry<Integer,Trainee>> Trainees=tservice.getAllTrainee();
+			Iterator<Entry<Integer,Trainee>> itr=Trainees.iterator();
+			while(itr.hasNext()) {
+				Entry<Integer,Trainee> et=itr.next();
+				System.out.println(et.getKey()+""+et.getValue());
+			}
+			break;
+		default:
+	}
+}
+}}
+
+======================SERVICE LAYER=============================
+
+-------Service Interface----------
+package com.service;
+
+import java.util.Set;
+import java.util.Map.Entry;
+
+import com.entity.Trainee;
+
+public interface TraineeService {
+int addTrainee(Trainee t);
+	
+    Trainee updateTrainee(int tid,Trainee t);
+    
+    void deleteTrainee(int tid);
+
+	Trainee getTrainee(int tid);
+
+	Set<Entry<Integer,Trainee>> getAllTrainee();
+}
+
+----------Service Implemnetation---------
+package com.service;
+
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.dao.TraineeDao;
+import com.dao.TraineeDaoImp;
+import com.entity.Trainee;
+
+public class TraineeServiceImp implements TraineeService {
+    TraineeDao tdao=new TraineeDaoImp();
+	@Override
+	public int addTrainee(Trainee t) {
+		
+		return tdao.addTrainee(t);
+	}
+
+	@Override
+	public Trainee updateTrainee(int tid, Trainee t) {
+		
+		return tdao.updateTrainee(tid,t);
+	}
+
+	@Override
+	public void deleteTrainee(int tid) {
+		tdao.deleteTrainee(tid);
+		
+	}
+
+	@Override
+	public Trainee getTrainee(int tid) {
+		
+		return tdao.getTrainee(tid);
+	}
+
+	@Override
+	public Set<Entry<Integer, Trainee>> getAllTrainee() {
+		
+		return tdao.getAllTrainee();
+	}
+
+}
+
+================================DAO Layer====================================
+
+---------Dao Interface-----------
+package com.dao;
+
+import java.util.Set;
+import java.util.Map.Entry;
+import com.entity.Trainee;
+
+public interface TraineeDao {
+	int addTrainee(Trainee t);
+	
+    Trainee updateTrainee(int tid,Trainee t);
+    
+    void deleteTrainee(int tid);
+
+	Trainee getTrainee(int tid);
+
+	Set<Entry<Integer,Trainee>> getAllTrainee();
+}
+
+
+-------------DAO Implementation----------
+package com.dao;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import com.entity.Trainee;
+
+public class TraineeDaoImp implements TraineeDao {
+HashMap<Integer,Trainee> h=new HashMap(); //connection to database
+int tid=100;
+	@Override
+	public int addTrainee(Trainee t) {
+		h.put(++tid, t);
+		return tid;
+	}
+
+	@Override
+	public Trainee updateTrainee(int tid, Trainee t) {
+		h.put(tid, t);
+		return t;
+	}
+
+	@Override
+	public void deleteTrainee(int tid) {
+		h.remove(tid);
+		
+	}
+
+	@Override
+	public Trainee getTrainee(int tid) {
+		
+		return h.get(tid);
+	}
+
+	@Override
+	public Set<Entry<Integer, Trainee>> getAllTrainee() {
+		Set<Entry<Integer, Trainee>> result=h.entrySet();
+		return result;
+	}
+  
+}
+
                                                            
