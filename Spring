@@ -1,0 +1,89 @@
+--------EMployee.java-------
+package com.ia.spring;
+
+public class Employee {
+private int empId;
+private String empName;
+private int empSal;
+
+public Employee() {
+	// TODO Auto-generated constructor stub
+}
+
+public int getEmpId() {
+	return empId;
+}
+
+public void setEmpId(int empId) {
+	this.empId = empId;
+}
+
+public String getEmpName() {
+	return empName;
+}
+
+public void setEmpName(String empName) {
+	this.empName = empName;
+}
+
+public int getEmpSal() {
+	return empSal;
+}
+
+public void setEmpSal(int empSal) {
+	this.empSal = empSal;
+}
+
+public Employee(int empId, String empName, int empSal) {
+	super();
+	this.empId = empId;
+	this.empName = empName;
+	this.empSal = empSal;
+}
+
+@Override
+public String toString() {
+	return "Employee [empId=" + empId + ", empName=" + empName + ", empSal=" + empSal + "]";
+}
+
+}
+----------Test.java----------
+package com.ia.spring;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class Test {
+
+	public static void main(String[] args) {
+	    Resource resource=new ClassPathResource("springCon.xml");
+	    BeanFactory factory=new XmlBeanFactory(resource);
+	    Employee emp=(Employee) factory.getBean("spring");
+	    System.out.println(emp);
+	}
+}
+-------springCon.xml-------
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+        <context:annotation-config/>
+        
+<bean class="com.ia.spring.Employee" id="spring" autowire="byType">
+<!-- <property name="empId" value="1001"></property>
+<property name="empName" value="Joy"></property>
+<property name="empSal" value="45000"></property>
+ -->
+<constructor-arg  value="1002"></constructor-arg>
+<constructor-arg value="Ram"></constructor-arg>
+<constructor-arg  value="145000"></constructor-arg>
+
+</bean>
+
+</beans>
